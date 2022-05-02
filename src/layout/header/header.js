@@ -198,7 +198,7 @@ class Header extends Component {
                         </div>
                     </header>
                     <Modal isOpen={this.state.cartview} toggle={this.cartview} className="cart-modal">
-                        <ModalHeader toggle={this.cartview}>Your Cart (2)</ModalHeader>
+                        <ModalHeader toggle={this.cartview}>Your Cart ({this.GetCartItems().length})</ModalHeader>
                         <ModalBody>
                             {(this.GetCartItems() != null && this.GetCartItems().length > 0) ?
                                 <>
@@ -230,8 +230,8 @@ class Header extends Component {
 
 
                                     <div className="d-flex justify-content-between align-items-center mb-8"> <span className="text-muted">Subtotal:</span>  <span className="text-dark">${this.GetCartItems().reduce((fr, CartItem) => fr + (CartItem.Qty * CartItem.Rate), 0).toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</span>
-                                    </div> <Link to="/cart" className="btn btn-primary btn-animated mr-2"><i className="las la-shopping-cart mr-1" />View Cart</Link>
-                                    <Link to="/checkout" className="btn btn-dark"><i className="las la-money-check mr-1" />Continue To Checkout</Link>
+                                    </div> <Link to="/cart" className="btn btn-primary btn-animated mr-2" onClick={this.cartview}><i className="las la-shopping-cart mr-1" />View Cart</Link>
+                                    <Link to="/checkout" className="btn btn-dark" onClick={this.cartview}><i className="las la-money-check mr-1" />Continue To Checkout</Link>
                                 </>
                                 :
                                 <div>

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-	devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use:['style-loader','css-loader']
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.s[ac]ss$/i,
@@ -47,7 +47,7 @@ module.exports = {
           'sass-loader',
         ],
       },
-      
+
       {
         test: /\.html$/,
         use: [
@@ -69,7 +69,7 @@ module.exports = {
       {
         test: /\.(ico)$/,
         exclude: /node_modules/,
-        use: ['file-loader?name=[name].[ext]'] 
+        use: ['file-loader?name=[name].[ext]']
       },
       {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
@@ -80,7 +80,7 @@ module.exports = {
               name: '[name].[ext]',
               outputPath: 'fonts/'
             }
-          } 
+          }
         ]
       },
     ]
@@ -91,13 +91,13 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
-      favicon: './public/favicon.ico',
+      // favicon: './public/favicon.ico',
       filename: "./index.html"
     }),
     new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery'
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     }),
   ]
 };

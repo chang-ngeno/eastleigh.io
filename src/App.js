@@ -45,13 +45,12 @@ import checkout from './pages/shop/checkout';
 import ordercomplate from './pages/shop/ordercomplate';
 import wishlist from './pages/shop/wishlist';
 import Scrolltop from './layout/back-to-top';
+import Banner from "./layout/banner/banner.component";
 
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-  }
-  componentWillMount() {
     this.props.getProducts();
   }
   getUrl(pathname) {
@@ -71,6 +70,7 @@ class App extends React.Component {
             :
             <div className="page-wrapper">
               <Header />
+              <Banner />
               <Switch>
                 <Route exact path="/" component={index} />
                 <Route exact path="/index2" component={index2} />

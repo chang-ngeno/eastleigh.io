@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Pageheading from '../../widgets/pageheading';
@@ -7,6 +7,7 @@ class cart extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      cartItems: this.GetCartItems()
     }
     this.GetCartItems = this.GetCartItems.bind(this);
   }
@@ -21,6 +22,7 @@ class cart extends Component {
     CartValue = CartValue.slice(0, Index).concat(CartValue.slice(Index + 1, CartValue.length));
     localStorage.removeItem("CartProduct");
     localStorage.setItem("CartProduct", JSON.stringify(CartValue));
+    this.setState({cartItems:this.GetCartItems()});
   }
 
   AddQty = (Index) => {
@@ -28,6 +30,15 @@ class cart extends Component {
     CartValue[Index].Qty = parseInt(CartValue[Index].Qty + 1);
     localStorage.removeItem("CartProduct");
     localStorage.setItem("CartProduct", JSON.stringify(CartValue));
+    this.setState({cartItems:this.GetCartItems()});
+  }
+
+  handleQtyChange = (Index) => {
+    let CartValue = JSON.parse(localStorage.getItem("CartProduct"));
+    CartValue[Index].Qty = parseInt(document.getElementById("product-qty").value);
+    localStorage.removeItem("CartProduct");
+    localStorage.setItem("CartProduct", JSON.stringify(CartValue));
+    this.setState({cartItems:this.GetCartItems()});
   }
 
   RemoveQty = (Index) => {
@@ -41,9 +52,11 @@ class cart extends Component {
     } else {
       this.RemoveItem(Index);
     }
+    this.setState({cartItems:this.GetCartItems()});
   }
 
   render() {
+
     return (
       <>
         {/*hero section start*/}
@@ -90,7 +103,7 @@ class cart extends Component {
                                 <div className="d-flex justify-content-center align-items-center">
                                   <Link className="btn-product btn-product-up" onClick={() => this.RemoveQty(index)}> <i className="las la-minus" />
                                   </Link>
-                                  <input className="form-product" type="number" name="form-product" value={CartItem.Qty} />
+                                  <input id="product-qty" className="form-product" type="number" name="form-product" value={CartItem.Qty} onChange={() => this.handleQtyChange(index)}/>
                                   <Link className="btn-product btn-product-down" onClick={() => this.AddQty(index)}> <i className="las la-plus" />
                                   </Link>
                                 </div>
@@ -153,6 +166,7 @@ class cart extends Component {
       </>
     );
   }
+
 }
 
 export default cart;

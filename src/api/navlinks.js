@@ -3,44 +3,44 @@
  */
 export default [
    {
-      "menu_title": "Home",
+      "menu_title": "Categories",
       "type": "subMenu",
       "path": "/",
       "icon": "home",
       "child_routes": [
          {
             "path": "/",
-            "menu_title": "Home - Fashion 1",
+            "menu_title": "Jewellery",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
             "path": "/index2",
-            "menu_title": "Home - Fashion 2",
+            "menu_title": "Mens Clothes",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
             "path": "/index3",
-            "menu_title": "Home - Fashion 3",
+            "menu_title": "Kids Clothes",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
             "path": "/index4",
-            "menu_title": "Home - Electronic",
+            "menu_title": "Electronic",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
             "path": "/index5",
-            "menu_title": "Home - Furniture",
+            "menu_title": "Furniture",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
          {
             "path": "/index6",
-            "menu_title": "Home - Kids",
+            "menu_title": "Kids",
             "icon": "arrow_right_alt",
             "child_routes": null
          },
