@@ -18,7 +18,7 @@ h4, h5, h6, .h4, .h5, .h6 { font-weight: 500; }
 p { color: #8090b5; line-height: 1.7; }
 
 .lead { font-size: 1.25rem; font-weight: 300; }
-section { padding: 5rem 0 }
+section { padding: 2rem 0 }
 ul { margin: 0px; padding: 0px; }
 .text-large { font-size: 3rem; line-height: 3.5rem }
 .text-small { font-size: 0.9rem; }

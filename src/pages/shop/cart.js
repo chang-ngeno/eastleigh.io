@@ -35,7 +35,15 @@ class cart extends Component {
 
   handleQtyChange = (Index) => {
     let CartValue = JSON.parse(localStorage.getItem("CartProduct"));
-    CartValue[Index].Qty = parseInt(document.getElementById("product-qty").value);
+    let qty = document.getElementById("product-qty-"+Index).value;
+    if ( qty > 1) {
+      CartValue[Index].Qty = parseInt(qty - 1);
+      localStorage.removeItem("CartProduct");
+      localStorage.setItem("CartProduct", JSON.stringify(CartValue));
+    } else {
+      this.RemoveItem(Index);
+    }
+    CartValue[Index].Qty = parseInt(qty);
     localStorage.removeItem("CartProduct");
     localStorage.setItem("CartProduct", JSON.stringify(CartValue));
     this.setState({cartItems:this.GetCartItems()});
@@ -103,7 +111,8 @@ class cart extends Component {
                                 <div className="d-flex justify-content-center align-items-center">
                                   <Link className="btn-product btn-product-up" onClick={() => this.RemoveQty(index)}> <i className="las la-minus" />
                                   </Link>
-                                  <input id="product-qty" className="form-product" type="number" name="form-product" value={CartItem.Qty} onChange={() => this.handleQtyChange(index)}/>
+                                  <input id={"product-qty-"+index} className="form-product" type="number" name="form-product" value={CartItem.Qty} onChange={() => this.handleQtyChange(index)}/>
+                                  {}
                                   <Link className="btn-product btn-product-down" onClick={() => this.AddQty(index)}> <i className="las la-plus" />
                                   </Link>
                                 </div>
